@@ -81,7 +81,7 @@ nbd.LL <- function(params, x, T.cal) {
   T.cal <- rep(T.cal, length.out = max.length)
   r <- params[1]
   alpha <- params[2]
-  P1 <- lgamma(r + x) + r * log(alpha)
+  P1 <- lgamma(r + x) + r * log(alpha) + x * log(T.cal) #missing the numerator from the second term in the likelihood function
   P2 <- lgamma(r) + (r + x) * log(alpha + T.cal)
   llh <- P1 - P2
   return(llh)
